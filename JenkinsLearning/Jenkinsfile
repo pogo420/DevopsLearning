@@ -6,11 +6,18 @@ pipeline {
     TEST1 = "ola"
   }
 
+  parameters {
+    string(name: "server_name", defaultValue: "uber", descrption: "")
+    choice(name: "VERSION", choices:["1.1", "1.2", "1.8"], descrption: "")
+    booleanParam(name: "skip_test", defaultValue: false, descrption: "")
+  }
+
   stages {
 
     stage("build") {
       steps {
-        echo "Build jobs"
+        echo "Build jobs.."
+        echo "executing vesion $VERSION and $server_name"
       }
     }
 
@@ -23,6 +30,17 @@ pipeline {
       }
       steps {
         echo "Deploy jobs $TEST2 and $TEST1"
+      }
+    }
+
+    stage("test") {
+      when {
+        expression {
+          params.skip_test
+        }
+      }
+      steps {
+        echo "test"
       }
     }
   }
