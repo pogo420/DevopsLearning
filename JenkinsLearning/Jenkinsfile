@@ -11,6 +11,9 @@ pipeline {
     }
 
     stage("deploy") {
+      when {
+        expression { env.BRANCH_NAME="master"} // jenkins provided env variables
+      }
       steps {
         echo "Deploy jobs"
       }
@@ -29,5 +32,5 @@ pipeline {
       echo "failure"
     }
   }
-  
+
 }
