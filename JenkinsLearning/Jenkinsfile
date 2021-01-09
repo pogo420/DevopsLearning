@@ -2,6 +2,10 @@ pipeline {
 
   agent any
 
+  environment {
+    TEST1 = "ola"
+  }
+
   stages {
 
     stage("build") {
@@ -11,11 +15,14 @@ pipeline {
     }
 
     stage("deploy") {
+    environment {
+      TEST2 = "ola2"
+    }
       when {
-        expression { env.BRANCH_NAME="master"} // jenkins provided env variables
+        expression { env.BRANCH_NAME=="master"} // jenkins provided env variables
       }
       steps {
-        echo "Deploy jobs"
+        echo "Deploy jobs $TEST2 and $TEST1"
       }
     }
   }
