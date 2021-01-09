@@ -7,9 +7,9 @@ pipeline {
   }
 
   parameters {
-    string(name: "server_name", defaultValue: "uber", descrption: "")
-    choice(name: "VERSION", choices:["1.1", "1.2", "1.8"], descrption: "")
-    booleanParam(name: "skip_test", defaultValue: false, descrption: "")
+    string(name: "server_name", defaultValue: "uber", description: "")
+    choice(name: "VERSION", choices:["1.1", "1.2", "1.8"], description: "")
+    booleanParam(name: "skip_test", defaultValue: false, description: "")
   }
 
   stages {
