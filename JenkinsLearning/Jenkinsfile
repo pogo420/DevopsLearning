@@ -17,7 +17,7 @@ pipeline {
     stage("build") {
       steps {
         echo "Build jobs.."
-        echo "executing vesion $VERSION and $server_name"
+        echo "executing vesion $params.VERSION and $params.server_name"
       }
     }
 
