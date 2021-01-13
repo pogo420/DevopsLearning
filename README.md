@@ -7,7 +7,7 @@ Check this [link](https://github.com/pogo420/DevopsLearning/wiki) for learning d
 * 8080 -> User interface
 * 50000 -> Jenkins master slave.
 
-## Minikube star:
+## Minikube Startup:
 ### First time
 minikube start --vm-driver=virtualbox
 ### Next time
