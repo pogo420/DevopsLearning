@@ -41,6 +41,15 @@ spec:
                   secretKeyRef:
                     name: basic-rest-secret
                     key: mysql-user-pass
+            - name: DUMMY_SA
+              value: /var/secrets/sample-secret.json  # make sure the file name matches with the file during the secret creation.
+          volumeMounts:
+            - name: application-secret
+              mountPath: /var/secrets/
+      volumes:
+        - name: application-secret
+          secret:
+            secretName: sample-secret
 
 ---
 

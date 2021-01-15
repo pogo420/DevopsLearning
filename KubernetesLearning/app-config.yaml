@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: basic-rest
-          image: am0072008/rest-java-spring:latest
+          image: am0072008/rest-java-spring:1.3
           ports:
             - containerPort: 8080
           env:
@@ -35,6 +35,16 @@ spec:
                 secretKeyRef:
                   name: basic-rest-secret
                   key: mysql-user-pass
+            - name: DUMMY_SA
+              value: /var/secrets/sample-secret.json # make sure the file name matches with the file during the secret creation.
+          volumeMounts:
+            - name: application-secret
+              mountPath: /var/secrets/
+      volumes:
+        - name: application-secret
+          secret:
+            secretName: sample-secret
+
 
 ---
 
@@ -50,3 +60,4 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+      nodePort: 30000  # port for external IP/ port you need to mention in browser.(Optional)
