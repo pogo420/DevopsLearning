@@ -1,0 +1,3 @@
+- name: end task
+  ansible.builtin.shell: echo Hello Arnab end
+  notify: cleanup

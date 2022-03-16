@@ -1,11 +1,11 @@
 ---
 - name: test playbook
-  hosts: test_host
+  hosts: localhost
 
   vars:
     - enabled: true
 
-  tasks:
-    - name: test command
-      ansible.builtin.shell: echo Hello Ansible
+  roles:
+    - role: test_role
       when: enabled
+ 

@@ -1,0 +1,7 @@
+- name: test task start
+  ansible.builtin.shell: echo Hello Arnab start
+  notify: cleanup
+
+- name: test task end
+  include: end.yaml
+  notify: cleanup
