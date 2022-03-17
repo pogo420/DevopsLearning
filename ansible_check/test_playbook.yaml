@@ -2,10 +2,6 @@
 - name: test playbook
   hosts: localhost
 
-  vars:
-    - enabled: true
-
   roles:
     - role: test_role
-      when: enabled
- 
+      when: hvars.enabled
